@@ -7,7 +7,6 @@ function Home(props) {
     const AuthStr = 'Bearer '.concat(USER_TOKEN);
     const [name, setName] = useState("");
     const [likedSongs, setLikedSongs] = useState([]);
-    console.log("test");
 
     useEffect(() => {
         axios.get("https://api.spotify.com/v1/me", { headers: { Authorization: AuthStr } }).then(res => {setName(res.data.display_name);})
@@ -20,6 +19,8 @@ function Home(props) {
                 setLikedSongs(tracks);
             })
     }, [USER_TOKEN])
+
+    axios.post('http://localhost:5000/home', {text: 'hello'}).then(res => console.log(res))
 
     return (
         <div>
