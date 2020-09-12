@@ -10,8 +10,8 @@ function Login(props) {
 
     return (
         <div className={"login-page"}>
-            <h1 className={"title"}>Playlist Generator</h1>
-            <p className={""}>Exploring a new genre? We've got you covered!</p>
+            <h1 className={"title"}>Mood Playlist Generator</h1>
+            <p className={""}>Looking to sort songs by your mood today? We've got you covered!</p>
             <SpotifyLogin
                 className={"login-button"}
                 clientId={clientId}
@@ -21,7 +21,7 @@ function Login(props) {
                 onFailure={onFailure}
             />
             <p></p>
-            <img className={"spotify-logo"} src={spotifyLogo} />
+            <img className={"spotify-logo"} src={spotifyLogo} alt={"spotify logo"}/>
         </div>
 
         )
