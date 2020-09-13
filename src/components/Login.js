@@ -10,8 +10,8 @@ function Login(props) {
 
     return (
         <div className={"login-page"}>
-            <h1 className={"title"}>Mood Playlist Generator</h1>
-            <p className={""}>Looking to sort songs by your mood today? We've got you covered!</p>
+            <h1 className={"title"}>{`<Vibe/>`}</h1>
+            <p className={""}>A vibe filter for your Spotify songs, powered by Wolfram AI</p>
             <SpotifyLogin
                 className={"login-button"}
                 clientId={clientId}
@@ -22,6 +22,9 @@ function Login(props) {
             />
             <p></p>
             <img className={"spotify-logo"} src={spotifyLogo} alt={"spotify logo"}/>
+            <div className={"footer"}>
+                <p>{`Built with ❤ by James Leong & Ryan Chang, Duke University`}</p>
+            </div>
         </div>
 
         )

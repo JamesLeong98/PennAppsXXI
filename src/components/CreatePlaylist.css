@@ -6,3 +6,8 @@
 button.aws-btn {
     margin: 10px 10px 50px;
 }
+
+.aws-btn {
+    height: 100px !important;
+    --button-default-font-size: 25px !important;
+}

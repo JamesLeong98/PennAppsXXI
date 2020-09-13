@@ -65,12 +65,12 @@ function CreatePlaylist({AuthStr, user, likedSongs, audioFeatures}) {
 
     return (
         <div>
-            <h4 className={"mood-playlist-title"}>Generate Your Mood Playlist!</h4>
-            <AwesomeButton type="primary" onReleased={onChill}>Chill</AwesomeButton>
-            <AwesomeButton type="secondary" onReleased={onSad}>Sad</AwesomeButton>
-            <AwesomeButton type="primary" onReleased={onParty}>Party</AwesomeButton>
-            <AwesomeButton type="secondary" onReleased={onUplifting}>Uplifting</AwesomeButton>
-            <AwesomeButton type="primary" onReleased={onRomantic}>Romantic</AwesomeButton>
+            <h4 className={"mood-playlist-title"}>Generate Your Vibe Playlist!</h4>
+            <AwesomeButton size="large" type="primary" onReleased={onChill}>Chill</AwesomeButton>
+            <AwesomeButton size="large" type="secondary" onReleased={onSad}>Sad</AwesomeButton>
+            <AwesomeButton size="large" type="primary" onReleased={onParty}>Party</AwesomeButton>
+            <AwesomeButton size="large" type="secondary" onReleased={onUplifting}>Uplifting</AwesomeButton>
+            <AwesomeButton size="large" type="primary" onReleased={onRomantic}>Romantic</AwesomeButton>
         </div>
     )
 }
