@@ -1,3 +1,12 @@
 h3.welcome-title {
     margin-top: 50px;
 }
+
+table.main-table {
+    width: 100%;
+    margin-top: 70px;
+}
+
+table tr {
+    vertical-align: top;
+}

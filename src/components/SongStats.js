@@ -3,13 +3,15 @@ import './SongStats.css';
 import {ProgressBar} from "react-bootstrap";
 
 function SongStats({features}) {
+    const acousticness = [];
     const energy = [];
     const danceability = [];
     const speechiness = [];
     const valence = [];
     const duration = [];
-    console.log(features);
+
     for (const id of Object.keys(features)) {
+        acousticness.push(features[id].acousticness);
         energy.push(features[id].energy);
         danceability.push(features[id].danceability);
         speechiness.push(features[id].speechiness);
@@ -17,6 +19,7 @@ function SongStats({features}) {
         duration.push(features[id].duration_ms);
     }
 
+    const acousticLevel = Math.round(acousticness.reduce((a, b) => a + b, 0) * 100 / acousticness.length);
     const energyLevel = Math.round(energy.reduce((a, b) => a + b, 0) * 100 / energy.length);
     const danceLevel = Math.round(danceability.reduce((a, b) => a + b, 0) * 100 / energy.length);
     const speechLevel = Math.round(speechiness.reduce((a, b) => a + b, 0) * 100 / energy.length);
@@ -25,15 +28,20 @@ function SongStats({features}) {
 
     return(
         <div className={"song-stats"}>
-            <h2>Your Song Stats</h2>
-            <ProgressBar now={energyLevel} label={`${energyLevel}%`}/>
-            <ProgressBar now={danceLevel} label={`${danceLevel}%`}/>
-            <ProgressBar now={speechLevel} label={`${speechLevel}%`}/>
-            <ProgressBar now={valenceLevel} label={`${valenceLevel}%`}/>
-            <span>Average Duration: {Math.floor(durationLevel/60)} min {durationLevel%60}s</span>
+            <h4>Audio Stats</h4>
+            <p>Acousticness</p>
+            <ProgressBar now={acousticLevel} label={`${acousticLevel}%`}/>
+            <p>Energy</p>
+            <ProgressBar variant="warning" now={energyLevel} label={`${energyLevel}%`}/>
+            <p>Danceability</p>
+            <ProgressBar variant="danger"  now={danceLevel} label={`${danceLevel}%`}/>
+            <p>Speechiness</p>
+            <ProgressBar variant="success" now={speechLevel} label={`${speechLevel}%`}/>
+            <p>Valence</p>
+            <ProgressBar variant="info" now={valenceLevel} label={`${valenceLevel}%`}/>
+            <p style={{marginTop: "40px"}}>Average Song Duration: {Math.floor(durationLevel/60)} min {durationLevel%60}s</p>
         </div>
-
     )
 }
 
-export default SongStats
+export default SongStats;

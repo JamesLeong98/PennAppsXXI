@@ -1,11 +1,18 @@
 div.song-stats {
     text-align: center;
-    width: 50%;
+    width: 80%;
 }
 
 div.progress {
     height: 2rem;
-    width: 70%;
-    margin: 20px;
+    width: 90%;
+    margin: 0 20px 20px;
 }
 
+.song-stats h4 {
+    margin-bottom: 30px;
+}
+
+.song-stats p {
+    margin-bottom: 5px;
+}

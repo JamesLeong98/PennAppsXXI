@@ -16,7 +16,7 @@ function Login(props) {
                 className={"login-button"}
                 clientId={clientId}
                 redirectUri={redirectUri}
-                scope={"user-read-currently-playing user-top-read user-library-read"}
+                scope={"user-read-currently-playing user-top-read user-library-read playlist-modify-public playlist-modify-private"}
                 onSuccess={onSuccess}
                 onFailure={onFailure}
             />

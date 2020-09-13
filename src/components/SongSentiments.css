@@ -1,0 +1,7 @@
+.sentiment-title {
+    margin: 50px 0;
+}
+
+.sentiments canvas {
+    width: 80%;
+}

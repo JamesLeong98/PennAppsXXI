@@ -16,30 +16,32 @@ CORS(app, support_credentials=True)
 
 def analyze_music():
     input = request.get_json()
+    res = {}
 
-    try:
-        song_details = get_song_url(input['artist'], input['song'])
-        song_url = song_details['response']['hits'][0]['result']['url']
-        print(song_url)
-        song_lyrics = scrape_lyrics(song_url)
-        print(song_lyrics)
-        sentiment_score = analyser.polarity_scores(song_lyrics)
+    for (k,v) in input.items():
+        try:
+            song_details = get_song_url(v['artist'], v['song'])
+            song_url = song_details['response']['hits'][0]['result']['url']
+            song_lyrics = scrape_lyrics(song_url)
+            sentiment_score = analyser.polarity_scores(song_lyrics)
 
-        if sentiment_score['compound'] >= 0.05:
-            sentiment_percentage = sentiment_score['compound']
-            sentiment = 'Positive'
-        elif sentiment_score['compound'] > -0.05 and sentiment_score['compound'] < 0.05:
-            sentiment_percentage = sentiment_score['compound']
-            sentiment = 'Neutral'
-        elif sentiment_score['compound'] <= -0.05:
-            sentiment_percentage = sentiment_score['compound']
-            sentiment = 'Negative'
+            if sentiment_score['compound'] >= 0.05:
+                sentiment_percentage = sentiment_score['compound']
+                sentiment = 'Positive'
+            elif sentiment_score['compound'] > -0.05 and sentiment_score['compound'] < 0.05:
+                sentiment_percentage = sentiment_score['compound']
+                sentiment = 'Neutral'
+            elif sentiment_score['compound'] <= -0.05:
+                sentiment_percentage = sentiment_score['compound']
+                sentiment = 'Negative'
 
-    except:
-        sentiment_list.append('None')
-        sentiment_score_list.append(0)
+        except:
+            sentiment = 'None'
+            sentiment_percentage = 0
 
-    return jsonify({'sentiment': sentiment, 'score': abs(sentiment_percentage) * 100 })
+        res[k] = {'sentiment': sentiment, 'score': abs(sentiment_percentage) * 100 }
+
+    return jsonify(res)
 
 def get_song_url(artist, song):
     client_token = "L3Xzgv6bnh1jEVdIJgF-t5JLxz2GJqbCTnEZyFdgq8JhHY6GM5K_1Ek9uKpBYgMw"
