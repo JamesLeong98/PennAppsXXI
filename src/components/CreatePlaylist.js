@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from 'react';
+import React from 'react';
 import './CreatePlaylist.css';
 import { AwesomeButton } from "react-awesome-button";
 import "react-awesome-button/dist/styles.css";
@@ -48,11 +48,10 @@ function CreatePlaylist({AuthStr, user, likedSongs, audioFeatures}) {
                 str = str.replaceAll(' ', '');
                 const arr = str.split(",")
                 for (let i=0; i<arr.length; i++) {
-                    if (arr[i] == mood) {
+                    if (arr[i] === mood) {
                         uriList.push(likedSongs[audios[i]].uri)
                     }
                 }
-                console.log(uriList);
                 addSongs(uriList, playlistId)
             })
     }

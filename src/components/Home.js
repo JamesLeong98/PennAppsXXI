@@ -58,8 +58,8 @@ function Home(props) {
                 </tr>
                 </thead>
             </table>
-            <SongSentiments sentiments={lyricSentiments} />
             <CreatePlaylist AuthStr={AuthStr} user={user} likedSongs={likedSongs} audioFeatures={audioFeatures}/>
+            <SongSentiments sentiments={lyricSentiments} />
         </div>
     );
 }
