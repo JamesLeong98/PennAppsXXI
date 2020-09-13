@@ -47,7 +47,6 @@ function Home(props) {
 
     }, [likedSongs, AuthStr])
 
-
     return (
         <div>
             <h3 className={"welcome-title"}><span>Hello, </span><span style={{color: "#1DB954"}}>{user.display_name}</span></h3>
